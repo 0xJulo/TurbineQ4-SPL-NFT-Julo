@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@solana-program/token": "^0.18.0",
+    "@solana/kit": "^8.6.0",
+    "@solana/kit-plugin-rpc": "^0.23.0",
+    "@solana/kit-plugin-signer": "^0.23.0"
+  },
+  "name": "turbineq4-spl-nft-julo",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

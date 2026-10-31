@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Wallet keypairs - never commit these
+*wallet*.json
+*keypair*.json
+id.json
+
+# Environment variables
+.env
+.env.*
+
+# Build output
+dist/
+out/
+
+# Logs
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
