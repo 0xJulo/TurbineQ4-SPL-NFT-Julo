@@ -13,5 +13,8 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "scripts": {
+    "wallet": "bun run src/tests/wallet_check.ts"
   }
 }

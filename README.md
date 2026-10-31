@@ -10,3 +10,8 @@ And optionally:
 
 4. Transfer the NFT ownership between wallets  
 5. Permanently destroy the NFT and reclaim the rent fees.
+
+## Code Documentation
+
+- Solana Kit: https://www.solanakit.com/docs
+- Assets on Solana: https://solana.com/docs/tokens
