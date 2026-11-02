@@ -113,3 +113,18 @@ Metadata JSON: [EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF](https://gateway.ir
 Asset: [A1ag6hd7TR6GYz8dkzpfeBpKhHPYDLEoybEttTTLward](https://explorer.solana.com/address/A1ag6hd7TR6GYz8dkzpfeBpKhHPYDLEoybEttTTLward?cluster=devnet)
 
 Mint transaction: [496XB7rdAmwPk4GVnttcqXhXUhhpb9L5AL4WrGPFMsazUmxYSjC7eAqazYqt7fEEqJNxwJ3WiEPk9nwjRAXM2c46](https://explorer.solana.com/tx/496XB7rdAmwPk4GVnttcqXhXUhhpb9L5AL4WrGPFMsazUmxYSjC7eAqazYqt7fEEqJNxwJ3WiEPk9nwjRAXM2c46?cluster=devnet)
+
+**Step 4:** Updating the NFT's name and metadata
+
+- `src/nft/nft-update.ts` updates the NFT's name and metadata URI as the update authority
+- The asset address is loaded and converted with Umi's `publicKey()`
+- `fetchAsset()` reads the current asset from devnet, which `update()` needs to build the instruction
+- A new metadata JSON (new name and description, same image) is uploaded to Irys, returning a new URI
+- `update()` writes the new name and URI onto the asset account; the owner, address and image stay the same
+- The devnet wallet signs as the update authority, which is required for the update to be accepted
+
+New name: Julo's updated Turbine NFT
+
+New metadata JSON: [8FcncBkPDh6EA9SZLWHp11Lh5TbD4EX6uT2spE3tUNjJ](https://gateway.irys.xyz/8FcncBkPDh6EA9SZLWHp11Lh5TbD4EX6uT2spE3tUNjJ)
+
+Update transaction: [2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c](https://explorer.solana.com/tx/2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c?cluster=devnet) 
