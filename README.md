@@ -47,3 +47,13 @@ Devnet SPL mint address: [3xrTgxaNy8B1zVV1knSEcCFQmigFQ7H9zCwZT2aXYgsG](https://
 - The amount is in base units: 9 decimals, 1,000 tokens = 1,000,000,000,000
 
 Mint transaction: [tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNwwpC9CUEiEHeNA5QdVUa4eYQxpFT](https://explorer.solana.com/tx/tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNwwpC9CUEiEHeNA5QdVUa4eYQxpFT?cluster=devnet)
+
+**Step 4:** Transferring tokens
+
+- `src/token/token-transfer.ts` transfers 100 tokens to a second devnet wallet
+- The mint and recipient address are loaded and converted with `address()`
+- It calls the Token Program's `transferToATA`, which works out both wallets' ATAs and creates the recipient's if it doesn't exist
+- The sending wallet signs as the authority (the owner of the tokens being sent) and pays the rent for the recipient's new ATA
+- After the transfer, the sender holds 900 tokens and the recipient holds 100
+
+Transfer transaction: [3KheN2ayirbWbBKfPMygknFVUiwZgW7rQsnDC6phsSRh1RRmTF2BiiLCqb2mUh2DDZVf4cJHzsSnrnMVReSmTXPa](https://explorer.solana.com/tx/3KheN2ayirbWbBKfPMygknFVUiwZgW7rQsnDC6phsSRh1RRmTF2BiiLCqb2mUh2DDZVf4cJHzsSnrnMVReSmTXPa?cluster=devnet)
