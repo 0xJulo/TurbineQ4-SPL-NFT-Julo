@@ -57,3 +57,20 @@ Mint transaction: [tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNww
 - After the transfer, the sender holds 900 tokens and the recipient holds 100
 
 Transfer transaction: [3KheN2ayirbWbBKfPMygknFVUiwZgW7rQsnDC6phsSRh1RRmTF2BiiLCqb2mUh2DDZVf4cJHzsSnrnMVReSmTXPa](https://explorer.solana.com/tx/3KheN2ayirbWbBKfPMygknFVUiwZgW7rQsnDC6phsSRh1RRmTF2BiiLCqb2mUh2DDZVf4cJHzsSnrnMVReSmTXPa?cluster=devnet)
+
+**Step 5:** Adding token metadata 
+
+- Set up a second client - `src/umi.ts` - using Metaplex's Umi framework. Metaplex programs are built for Umi, not Kit
+  - Created with `createUmi()` on devnet, loading the same wallet from WALLET_PATH
+  - Plugins: `keypairIdentity`(wallet as signer and payer), `mplCore`, `mplTokenMetadata`, and `irysUploader` (devnet storage)
+- `src/token/token-metadata.ts` gives the SPL token a name and ticker
+- The plain Token Program has no name or symbol fields, so these are stored in a separate Metaplex Token Metadata account, a PDA derived from the mint address
+- A metadata JSON (name, symbol, description) is uploaded to Irys, which returns a URI
+- `createV1` creates the metadata account with the name, symbol, URI, a 0% royalty and the "Fungible" token standard
+- The wallet signs as the mint authority, which is required to add metadata to an existing mint
+
+Metadata account: [6CbUNfNkteTpu7YpqHr2m1dsBgvuGt1KZ7ZD1ojfLtzW](https://explorer.solana.com/address/6CbUNfNkteTpu7YpqHr2m1dsBgvuGt1KZ7ZD1ojfLtzW?cluster=devnet)
+
+Metadata JSON: [E7JX6weuNo4XaAf9S8fcPTkoNZ6PgRdoVLqcL1Cx3fc8](https://gateway.irys.xyz/E7JX6weuNo4XaAf9S8fcPTkoNZ6PgRdoVLqcL1Cx3fc8)
+
+Metadata transaction: [3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcxdzQtnFg9cFgAzdC5Ykd8RahZt7QRM3G](https://explorer.solana.com/tx/3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcxdzQtnFg9cFgAzdC5Ykd8RahZt7QRM3G?cluster=devnet)
