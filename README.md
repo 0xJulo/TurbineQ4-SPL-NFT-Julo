@@ -37,3 +37,13 @@ And optionally:
 - The Token Program initialises it as a mint with 9 decimals and the devnet wallet as mint authority
 
 Devnet SPL mint address: [3xrTgxaNy8B1zVV1knSEcCFQmigFQ7H9zCwZT2aXYgsG](https://explorer.solana.com/address/3xrTgxaNy8B1zVV1knSEcCFQmigFQ7H9zCwZT2aXYgsG?cluster=devnet)
+
+**Step 3:** Minting tokens
+
+- `src/token/token-mint.ts` mints 1,000 tokens to the devnet wallet
+- The mint address is loaded and converted with Kit's `address()` function
+- It calls the Token Program's plugin `mintToATA` which creates the wallet's Associated Token Account if one doesn't already exist, then mints to it
+- The wallet signs as the mint authority, which is required to approve minting
+- The amount is in base units: 9 decimals, 1,000 tokens = 1,000,000,000,000
+
+Mint transaction: [tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNwwpC9CUEiEHeNA5QdVUa4eYQxpFT](https://explorer.solana.com/tx/tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNwwpC9CUEiEHeNA5QdVUa4eYQxpFT?cluster=devnet)
