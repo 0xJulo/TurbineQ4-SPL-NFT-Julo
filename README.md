@@ -87,3 +87,15 @@ Metadata transaction: [3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcx
 - Note: Irys devnet uploads are temporary unlike mainnet's permanent storage
 
 Image URI: [Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN](https://gateway.irys.xyz/Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN)
+
+**Step 2:** Uploading the NFT metadata
+
+- `src/nft/nft-metadata.ts` uploads the NFT's metadata JSON to Irys
+- The image URI from step 1 is loaded
+- The JSON follows the Metaplex NFT metadata standard, so wallets and explorers can read it:
+  - `name` and `description`
+  - `image`: the image URI from step 1
+  - `properties.files`: lists the image file and its content type
+- `umi.uploader.uploadJson()` uploads it and returns the metadata URI, which the NFT will store onchain in the next step.
+
+Metadata JSON: [EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF](https://gateway.irys.xyz/EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF)
