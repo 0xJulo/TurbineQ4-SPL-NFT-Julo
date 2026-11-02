@@ -127,4 +127,16 @@ New name: Julo's updated Turbine NFT
 
 New metadata JSON: [8FcncBkPDh6EA9SZLWHp11Lh5TbD4EX6uT2spE3tUNjJ](https://gateway.irys.xyz/8FcncBkPDh6EA9SZLWHp11Lh5TbD4EX6uT2spE3tUNjJ)
 
-Update transaction: [2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c](https://explorer.solana.com/tx/2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c?cluster=devnet) 
+Update transaction: [2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c](https://explorer.solana.com/tx/2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c?cluster=devnet)
+
+**Step 5:** Transferring the NFT
+
+- `src/nft/nft-transfer.ts` transfers the NFT to a second devnet wallet
+- The asset and recipient addresses are loaded and converted with Umi's `publicKey()`
+- `fetchAsset()` reads the current asset from devnet, which `transfer()` needs to build the instruction
+- `transfer()` sets the recipient as the new owner; the devnet wallet signs as the current owner, which is required to transfer
+- After the transfer, the owner is the second wallet, but the update authority stays with the original wallet: owning and updating are separate roles in MPL Core
+
+New owner: [8tZMYd1ApjMfTk6GjBVYqXgmJVLYaCFRhtJaWXHivAy3](https://explorer.solana.com/address/8tZMYd1ApjMfTk6GjBVYqXgmJVLYaCFRhtJaWXHivAy3?cluster=devnet)
+
+Transfer transaction: [2F8ds9Vh549Kz7f1L3TaX7C246isHBvwwR2ZdV3MGxregxVmDpcKa7avffVWTQQAAdz5sZHHLS9v9YnwLGYQkNZH](https://explorer.solana.com/tx/2F8ds9Vh549Kz7f1L3TaX7C246isHBvwwR2ZdV3MGxregxVmDpcKa7avffVWTQQAAdz5sZHHLS9v9YnwLGYQkNZH?cluster=devnet) 
