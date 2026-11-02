@@ -99,3 +99,17 @@ Image URI: [Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN](https://gateway.irys.x
 - `umi.uploader.uploadJson()` uploads it and returns the metadata URI, which the NFT will store onchain in the next step.
 
 Metadata JSON: [EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF](https://gateway.irys.xyz/EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF)
+
+**Step 3:** Minting NFT with MPL Core
+
+- `src/nft/nft-mint.ts` creates the NFT as an MPL Core asset, using the Umi client
+- With MPL Core, the NFT is a single asset account that stores its name, URI, owner and update authority (no separate mint, token account or metadata account)
+- The metadata URI from step 2 is loaded.
+- `generateSigner(umi)` creates a new keypair whose address becomes the NFT's address; it signs because a new account is being created there
+- `create()` builds the instruction with the asset, name and URI, and `sendAndConfirm()` sends it
+- The owner and update authority both default to the devnet wallet, which allows the NFT to be updated in the next step
+- The asset account holds about 0.003 SOL in rent, which can be reclaimed by burning it
+
+Asset: [A1ag6hd7TR6GYz8dkzpfeBpKhHPYDLEoybEttTTLward](https://explorer.solana.com/address/A1ag6hd7TR6GYz8dkzpfeBpKhHPYDLEoybEttTTLward?cluster=devnet)
+
+Mint transaction: [496XB7rdAmwPk4GVnttcqXhXUhhpb9L5AL4WrGPFMsazUmxYSjC7eAqazYqt7fEEqJNxwJ3WiEPk9nwjRAXM2c46](https://explorer.solana.com/tx/496XB7rdAmwPk4GVnttcqXhXUhhpb9L5AL4WrGPFMsazUmxYSjC7eAqazYqt7fEEqJNxwJ3WiEPk9nwjRAXM2c46?cluster=devnet)
