@@ -16,7 +16,7 @@ And optionally:
 - Solana Kit: https://www.solanakit.com/docs
 - Assets on Solana: https://solana.com/docs/tokens
 
-## Results
+## Results (SPL Token)
 
 **Step 1:** Setting up the client
 
@@ -74,3 +74,16 @@ Metadata account: [6CbUNfNkteTpu7YpqHr2m1dsBgvuGt1KZ7ZD1ojfLtzW](https://explore
 Metadata JSON: [E7JX6weuNo4XaAf9S8fcPTkoNZ6PgRdoVLqcL1Cx3fc8](https://gateway.irys.xyz/E7JX6weuNo4XaAf9S8fcPTkoNZ6PgRdoVLqcL1Cx3fc8)
 
 Metadata transaction: [3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcxdzQtnFg9cFgAzdC5Ykd8RahZt7QRM3G](https://explorer.solana.com/tx/3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcxdzQtnFg9cFgAzdC5Ykd8RahZt7QRM3G?cluster=devnet)
+
+
+## Results (NFT)
+
+**Step 1:** Uploading the NFT image
+
+- `src/nft/nft-image.ts` uploads the NFT's image (`assets/Julo.png`) to Irys, using the Umi client
+- The image is read as raw bytes with `Bun.file().bytes()`
+- The bytes are wrapped as a Umi `GenericFile` with `createGenericFile`, giving it a file name and `image/png` content type
+- `umi.uploader.upload()` uploads it to Irys devnet storage and returns the image URI, which goes into the NFT's metadata JSON in the next step
+- Note: Irys devnet uploads are temporary unlike mainnet's permanent storage
+
+Image URI: [Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN](https://gateway.irys.xyz/Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN)
