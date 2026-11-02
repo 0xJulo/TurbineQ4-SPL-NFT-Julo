@@ -18,7 +18,7 @@ And optionally:
 
 ## Results (SPL Token)
 
-**Step 1:** Setting up the client
+### **Step 1:** Setting up the client
 
 - Created the shared Solana client in `src/client.ts` using `@solana/kit`
 - The client is built with `createClient()`, then extended with three plugins
@@ -28,7 +28,7 @@ And optionally:
 - Every script will import the one client instead of repeating the setup
 - `src/tests/wallet-check.ts` is used to log the wallet address and devnet SOL balance
 
-**Step 2:** Creating the token mint
+### **Step 2:** Creating the token mint
 
 - `src/token/token-init.ts` creates a new SPL token mint on devnet
 - The script creates a new keypair whose address becomes the mint address, the token's unique ID
@@ -38,7 +38,7 @@ And optionally:
 
 Devnet SPL mint address: [3xrTgxaNy8B1zVV1knSEcCFQmigFQ7H9zCwZT2aXYgsG](https://explorer.solana.com/address/3xrTgxaNy8B1zVV1knSEcCFQmigFQ7H9zCwZT2aXYgsG?cluster=devnet)
 
-**Step 3:** Minting tokens
+### **Step 3:** Minting tokens
 
 - `src/token/token-mint.ts` mints 1,000 tokens to the devnet wallet
 - The mint address is loaded and converted with Kit's `address()` function
@@ -48,7 +48,7 @@ Devnet SPL mint address: [3xrTgxaNy8B1zVV1knSEcCFQmigFQ7H9zCwZT2aXYgsG](https://
 
 Mint transaction: [tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNwwpC9CUEiEHeNA5QdVUa4eYQxpFT](https://explorer.solana.com/tx/tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNwwpC9CUEiEHeNA5QdVUa4eYQxpFT?cluster=devnet)
 
-**Step 4:** Transferring tokens
+### **Step 4:** Transferring tokens
 
 - `src/token/token-transfer.ts` transfers 100 tokens to a second devnet wallet
 - The mint and recipient address are loaded and converted with `address()`
@@ -58,7 +58,7 @@ Mint transaction: [tb3aHmKJhC7eZCen3vi1Ptau6dB2Hk2hMtZTtJycHkQ2QLnHbmXsL8ZKnuNww
 
 Transfer transaction: [3KheN2ayirbWbBKfPMygknFVUiwZgW7rQsnDC6phsSRh1RRmTF2BiiLCqb2mUh2DDZVf4cJHzsSnrnMVReSmTXPa](https://explorer.solana.com/tx/3KheN2ayirbWbBKfPMygknFVUiwZgW7rQsnDC6phsSRh1RRmTF2BiiLCqb2mUh2DDZVf4cJHzsSnrnMVReSmTXPa?cluster=devnet)
 
-**Step 5:** Adding token metadata 
+### **Step 5:** Adding token metadata 
 
 - Set up a second client - `src/umi.ts` - using Metaplex's Umi framework. Metaplex programs are built for Umi, not Kit
   - Created with `createUmi()` on devnet, loading the same wallet from WALLET_PATH
@@ -78,7 +78,7 @@ Metadata transaction: [3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcx
 
 ## Results (NFT)
 
-**Step 1:** Uploading the NFT image
+### **Step 1:** Uploading the NFT image
 
 - `src/nft/nft-image.ts` uploads the NFT's image (`assets/Julo.png`) to Irys, using the Umi client
 - The image is read as raw bytes with `Bun.file().bytes()`
@@ -88,7 +88,7 @@ Metadata transaction: [3x27qpzsSZ6c3iN12GV7gaqeGjveQaiPWJkWKB8PB7SfEbezCGgEdErcx
 
 Image URI: [Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN](https://gateway.irys.xyz/Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN)
 
-**Step 2:** Uploading the NFT metadata
+### **Step 2:** Uploading the NFT metadata
 
 - `src/nft/nft-metadata.ts` uploads the NFT's metadata JSON to Irys
 - The image URI from step 1 is loaded
@@ -100,7 +100,7 @@ Image URI: [Dct5cd1ECQrJPJbSQ2o6YhB81HkvzN4LdFQD7YDHYhVN](https://gateway.irys.x
 
 Metadata JSON: [EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF](https://gateway.irys.xyz/EopdRWV1DVxdWtNfDZRAUK9CtoSN39ocRUM7SLAxFPRF)
 
-**Step 3:** Minting NFT with MPL Core
+### **Step 3:** Minting NFT with MPL Core
 
 - `src/nft/nft-mint.ts` creates the NFT as an MPL Core asset, using the Umi client
 - With MPL Core, the NFT is a single asset account that stores its name, URI, owner and update authority (no separate mint, token account or metadata account)
@@ -114,7 +114,7 @@ Asset: [A1ag6hd7TR6GYz8dkzpfeBpKhHPYDLEoybEttTTLward](https://explorer.solana.co
 
 Mint transaction: [496XB7rdAmwPk4GVnttcqXhXUhhpb9L5AL4WrGPFMsazUmxYSjC7eAqazYqt7fEEqJNxwJ3WiEPk9nwjRAXM2c46](https://explorer.solana.com/tx/496XB7rdAmwPk4GVnttcqXhXUhhpb9L5AL4WrGPFMsazUmxYSjC7eAqazYqt7fEEqJNxwJ3WiEPk9nwjRAXM2c46?cluster=devnet)
 
-**Step 4:** Updating the NFT's name and metadata
+### **Step 4:** Updating the NFT's name and metadata
 
 - `src/nft/nft-update.ts` updates the NFT's name and metadata URI as the update authority
 - The asset address is loaded and converted with Umi's `publicKey()`
@@ -129,7 +129,7 @@ New metadata JSON: [8FcncBkPDh6EA9SZLWHp11Lh5TbD4EX6uT2spE3tUNjJ](https://gatewa
 
 Update transaction: [2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c](https://explorer.solana.com/tx/2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK9WTmBPgAG9gLhZApSsPEwXkTNUK9c?cluster=devnet)
 
-**Step 5:** Transferring the NFT
+### **Step 5:** Transferring the NFT
 
 - `src/nft/nft-transfer.ts` transfers the NFT to a second devnet wallet
 - The asset and recipient addresses are loaded and converted with Umi's `publicKey()`
@@ -139,4 +139,22 @@ Update transaction: [2mrZLBmyC7GqPMgVVbz4HB6pZE3FedQqaCPufFzG8uPpPLyPQAby7XXaDbK
 
 New owner: [8tZMYd1ApjMfTk6GjBVYqXgmJVLYaCFRhtJaWXHivAy3](https://explorer.solana.com/address/8tZMYd1ApjMfTk6GjBVYqXgmJVLYaCFRhtJaWXHivAy3?cluster=devnet)
 
-Transfer transaction: [2F8ds9Vh549Kz7f1L3TaX7C246isHBvwwR2ZdV3MGxregxVmDpcKa7avffVWTQQAAdz5sZHHLS9v9YnwLGYQkNZH](https://explorer.solana.com/tx/2F8ds9Vh549Kz7f1L3TaX7C246isHBvwwR2ZdV3MGxregxVmDpcKa7avffVWTQQAAdz5sZHHLS9v9YnwLGYQkNZH?cluster=devnet) 
+Transfer transaction: [2F8ds9Vh549Kz7f1L3TaX7C246isHBvwwR2ZdV3MGxregxVmDpcKa7avffVWTQQAAdz5sZHHLS9v9YnwLGYQkNZH](https://explorer.solana.com/tx/2F8ds9Vh549Kz7f1L3TaX7C246isHBvwwR2ZdV3MGxregxVmDpcKa7avffVWTQQAAdz5sZHHLS9v9YnwLGYQkNZH?cluster=devnet)
+
+### **Step 6:** Burning an NFT and reclaiming rent
+
+- A second NFT was minted by running `src/nft/nft-mint.ts` again, so the first NFT stays intact as evidence of the mint, update and transfer
+- `src/nft/nft-burn.ts` permanently destroys the second NFT
+- The asset address is loaded and converted with Umi's `publicKey()`
+- `fetchAsset()` reads the current asset from devnet, which `burn()` needs to build the instruction
+- `burn()` destroys the asset; the devnet wallet signs as the owner, which is required to burn
+- Of the 0.0029732 SOL held by the asset account:
+  - 0.00081788 SOL of rent was returned to the wallet (0.00081288 SOL net, after the 0.000005 SOL transaction fee)
+  - 0.00065532 SOL stays as rent for a 1-byte "burned" marker account, which MPL Core keeps so the address can never be reused
+  - 0.0015 SOL stays in the account as MPL Core's protocol fee, charged at creation, so it is not part of the reclaimable rent
+
+Second NFT mint transaction: [HzEA1oGZH4cTdKuEfApitKvF79rxwcRtHtHUvoYyAf6M2csCP1be3xy2BSuJAueCAZT6xmwhJJHWseWCPe59kUx](https://explorer.solana.com/tx/HzEA1oGZH4cTdKuEfApitKvF79rxwcRtHtHUvoYyAf6M2csCP1be3xy2BSuJAueCAZT6xmwhJJHWseWCPe59kUx?cluster=devnet)
+
+Burned asset: [37LsL4iGbZFKTTADGoWtEP3jseciGgCvpgR7RbuhyPee](https://explorer.solana.com/address/37LsL4iGbZFKTTADGoWtEP3jseciGgCvpgR7RbuhyPee?cluster=devnet)
+
+Burn transaction: [3KQidXcAA6ymaDE43W3ABrKgPsyM7RxjhVzNhgDcsvq1fVHyqwp8wUhkmQxw9fM1db1GuZapzbyd7yPE63MLRoPh](https://explorer.solana.com/tx/3KQidXcAA6ymaDE43W3ABrKgPsyM7RxjhVzNhgDcsvq1fVHyqwp8wUhkmQxw9fM1db1GuZapzbyd7yPE63MLRoPh?cluster=devnet) 
